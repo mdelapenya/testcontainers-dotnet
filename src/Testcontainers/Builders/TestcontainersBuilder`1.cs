@@ -6,10 +6,11 @@ namespace DotNet.Testcontainers.Builders
 
   /// <inheritdoc cref="TestcontainersBuilder{TBuilderEntity, TContainerEntity, TConfigurationEntity}" />
   [PublicAPI]
-  public sealed class TestcontainersBuilder : TestcontainersBuilder<TestcontainersBuilder, ITestcontainersContainer, ITestcontainersConfiguration>
+  public sealed class TestcontainersBuilder<TContainerEntity> : TestcontainersBuilder<TestcontainersBuilder<TContainerEntity>, TContainerEntity, ITestcontainersConfiguration>
+    where TContainerEntity : ITestcontainersContainer
   {
     /// <summary>
-    /// Initializes a new instance of the <see cref="TestcontainersBuilder" /> class.
+    /// Initializes a new instance of the <see cref="TestcontainersBuilder{TContainerEntity}" /> class.
     /// </summary>
     public TestcontainersBuilder()
       : this(new TestcontainersConfiguration())
@@ -22,19 +23,19 @@ namespace DotNet.Testcontainers.Builders
     }
 
     /// <inheritdoc />
-    public override ITestcontainersContainer Build()
+    public override TContainerEntity Build()
     {
       throw new System.NotImplementedException();
     }
 
     /// <inheritdoc />
-    protected override TestcontainersBuilder Clone(IDockerResourceConfiguration dockerResourceConfiguration)
+    protected override TestcontainersBuilder<TContainerEntity> Clone(IDockerResourceConfiguration dockerResourceConfiguration)
     {
       throw new System.NotImplementedException();
     }
 
     /// <inheritdoc />
-    protected override TestcontainersBuilder Clone(ITestcontainersConfiguration dockerResourceConfiguration)
+    protected override TestcontainersBuilder<TContainerEntity> Clone(ITestcontainersConfiguration dockerResourceConfiguration)
     {
       throw new System.NotImplementedException();
     }

@@ -45,6 +45,39 @@ namespace DotNet.Testcontainers.Configurations
     /// <summary>
     /// Initializes a new instance of the <see cref="TestcontainersConfiguration" /> class.
     /// </summary>
+    /// <param name="dockerResourceConfiguration">The Docker container configuration.</param>
+    public TestcontainersConfiguration(ITestcontainersConfiguration dockerResourceConfiguration)
+      : this(
+        dockerResourceConfiguration.DockerEndpointAuthConfig,
+        dockerResourceConfiguration.DockerRegistryAuthConfig,
+        dockerResourceConfiguration.Image,
+        dockerResourceConfiguration.ImagePullPolicy,
+        dockerResourceConfiguration.Name,
+        dockerResourceConfiguration.Hostname,
+        dockerResourceConfiguration.MacAddress,
+        dockerResourceConfiguration.WorkingDirectory,
+        dockerResourceConfiguration.Entrypoint,
+        dockerResourceConfiguration.Command,
+        dockerResourceConfiguration.Environments,
+        dockerResourceConfiguration.Labels,
+        dockerResourceConfiguration.ExposedPorts,
+        dockerResourceConfiguration.PortBindings,
+        dockerResourceConfiguration.ResourceMappings,
+        dockerResourceConfiguration.Mounts,
+        dockerResourceConfiguration.Networks,
+        dockerResourceConfiguration.NetworkAliases,
+        dockerResourceConfiguration.OutputConsumer,
+        dockerResourceConfiguration.WaitStrategies,
+        dockerResourceConfiguration.ParameterModifiers,
+        dockerResourceConfiguration.StartupCallback,
+        dockerResourceConfiguration.AutoRemove,
+        dockerResourceConfiguration.Privileged)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TestcontainersConfiguration" /> class.
+    /// </summary>
     /// <param name="next">The next configuration.</param>
     /// <param name="previous">The previous configuration.</param>
     public TestcontainersConfiguration(ITestcontainersConfiguration next, ITestcontainersConfiguration previous)
